@@ -21,6 +21,7 @@ connectMongodb.connectMongodb(mongoDbURL);
 app.use(express.urlencoded({extended:false}));
 app.use(cookieParser());
 app.use(checkForAuthenticationCookie.checkForAuthenticationCookie('token'));
+app.use('/blog/public', express.static(__dirname + "/blog/public"))
 
 app.get('/',async (req,res)=>{
    const allblogs = await Blog.find({});

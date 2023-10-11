@@ -1,0 +1,16 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <%- include('./partials/head') %>
+    <title>Blog Page</title>
+</head>
+<body>
+    <%- include('./partials/navbar') %>
+<div class="container mt-4">
+    <h1><%= blogg.title %></h1>
+    <h2><%= blogg.body %></h2>
+    <img src="<%= blogg.coverImageURL %>" alt="no image">
+</div>
+    <%- include('./partials/script') %>
+</body>
+</html>
