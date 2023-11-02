@@ -1,3 +1,4 @@
+require("dotenv").config();
 const express = require('express');
 const path = require('path')
 const userRouter = require('./routes/user')
@@ -6,15 +7,15 @@ const connectMongodb = require('./connectMongoDB')
 const checkForAuthenticationCookie = require('./middlewares/authentication')
 const Blog = require('./models/blog')
 const cookieParser = require('cookie-parser')
-const mongoDbURL = 'mongodb://127.0.0.1:27017/blogify'
-const PORT = 4000
+const mongoDbURL = process.env.MONGO_URL //'mongodb://127.0.0.1:27017/blogify'
+const PORT = process.env.PORT || 4000
 const app = express();
 
 app.set('view engine','ejs')
 app.set('views',path.resolve('./views'))
 
 
-
+console.log('Mongodb url is ' + mongoDbURL);
 connectMongodb.connectMongodb(mongoDbURL);
 
 //middleware to deal with form data

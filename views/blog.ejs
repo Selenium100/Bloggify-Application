@@ -8,8 +8,21 @@
     <%- include('./partials/navbar') %>
 <div class="container mt-4">
     <h1><%= blogg.title %></h1>
-    <h2><%= blogg.body %></h2>
-    <img src="<%= blogg.coverImageURL %>" alt="no image">
+    <img src="<%= blogg.coverImageURL %>" alt="no image" width="300px">
+    <pre mt-3><%=blogg.body  %></pre>
+</div>
+
+<div class="container mt-4">
+    <h1>Comments(Not implemented yet)</h1>
+    <% if (locals.user) { %>
+    <form action="/comment/<%= blogg._id %>" method="post">
+        <div class="mb-3">
+            <input type="text" class="form-control" id="comment" name="comment" placeholder="Please enter your comment">
+          </div>
+          
+          <button type="submit" class="btn btn-primary">Add</button>
+    </form>
+    <% } %>
 </div>
     <%- include('./partials/script') %>
 </body>
